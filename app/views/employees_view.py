@@ -20,7 +20,7 @@ def add_employees():
     return id, last_name, first_name, middle_name, tab_number, inn, snils, gender, birth_date, birth_place, address, education, profession, marital_status, hire_date, dismissal_date, is_active
 
 def show_all_employees(employees):
-    print("Студенты:")
+    print("Работники:")
     print(employees)
     for employee in employees:
         print(f"ID: {employee[0]}, last_name: {employee[1]}, first_name: {employee[2]}")
