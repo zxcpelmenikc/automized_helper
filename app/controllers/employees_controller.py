@@ -34,7 +34,7 @@ def get_all_employees():
     # Получаем соединение с базой данных
     conn, cursor = init_db()
     if not conn or not cursor:
-        print("❌ Не удалось подключиться к базе данных")
+        print(" Не удалось подключиться к базе данных")
         return []
     
     try:
@@ -44,7 +44,7 @@ def get_all_employees():
         conn.close()
         return result
     except Exception as e:
-        print(f"❌ Ошибка при получении списка работников: {e}")
+        print(f" Ошибка при получении списка работников: {e}")
         if cursor:
             cursor.close()
         if conn:
@@ -55,7 +55,7 @@ def change_dismissal_date(id, dismissal_date):
     # Получаем соединение с базой данных
     conn, cursor = init_db()
     if not conn or not cursor:
-        print("❌ Не удалось подключиться к базе данных")
+        print(" Не удалось подключиться к базе данных")
         return False
     
     try:
@@ -65,7 +65,7 @@ def change_dismissal_date(id, dismissal_date):
         conn.close()
         return True
     except Exception as e:
-        print(f"❌ Ошибка при изменении даты увольнения: {e}")
+        print(f" Ошибка при изменении даты увольнения: {e}")
         if cursor:
             cursor.close()
         if conn:
@@ -76,7 +76,7 @@ def delete_employee(id):
     # Получаем соединение с базой данных
     conn, cursor = init_db()
     if not conn or not cursor:
-        print("❌ Не удалось подключиться к базе данных")
+        print(" Не удалось подключиться к базе данных")
         return False
     
     try:
@@ -86,7 +86,7 @@ def delete_employee(id):
         conn.close()
         return True
     except Exception as e:
-        print(f"❌ Ошибка при удалении работника: {e}")
+        print(f" Ошибка при удалении работника: {e}")
         if cursor:
             cursor.close()
         if conn:
