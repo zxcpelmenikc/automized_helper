@@ -7,7 +7,7 @@ def add_employees(id, last_name, first_name, middle_name, tab_number, inn, snils
     # Получаем соединение с базой данных
     conn, cursor = init_db()
     if not conn or not cursor:
-        print("❌ Не удалось подключиться к базе данных")
+        print(" Не удалось подключиться к базе данных")
         return False
     
     try:
@@ -23,7 +23,7 @@ def add_employees(id, last_name, first_name, middle_name, tab_number, inn, snils
         conn.close()
         return True
     except Exception as e:
-        print(f"❌ Ошибка при добавлении работника: {e}")
+        print(f" Ошибка при добавлении работника: {e}")
         if cursor:
             cursor.close()
         if conn:

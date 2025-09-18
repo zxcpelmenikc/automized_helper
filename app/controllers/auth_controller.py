@@ -51,18 +51,18 @@ def register_user(username, password):
     # Валидация входных данных
     username_valid, username_msg = validate_username(username)
     if not username_valid:
-        print(f"❌ Ошибка валидации имени пользователя: {username_msg}")
+        print(f" Ошибка валидации имени пользователя: {username_msg}")
         return False
     
     password_valid, password_msg = validate_password(password)
     if not password_valid:
-        print(f"❌ Ошибка валидации пароля: {password_msg}")
+        print(f" Ошибка валидации пароля: {password_msg}")
         return False
     
     # Получаем соединение с базой данных
     conn, cursor = init_db()
     if not conn or not cursor:
-        print("❌ Не удалось подключиться к базе данных")
+        print(" Не удалось подключиться к базе данных")
         return False
     
     try:
@@ -80,11 +80,11 @@ def register_user(username, password):
         conn.rollback()
         cursor.close()
         conn.close()
-        print("❌ Пользователь с таким именем уже существует")
+        print(" Пользователь с таким именем уже существует")
         return False
         
     except Exception as e:
-        print(f"❌ Ошибка при регистрации: {e}")
+        print(f" Ошибка при регистрации: {e}")
         if cursor:
             cursor.close()
         if conn:
@@ -94,18 +94,18 @@ def authorize_user(username, password):
     # Валидация входных данных
     username_valid, username_msg = validate_username(username)
     if not username_valid:
-        print(f"❌ Ошибка валидации имени пользователя: {username_msg}")
+        print(f" Ошибка валидации имени пользователя: {username_msg}")
         return False
     
     password_valid, password_msg = validate_password(password)
     if not password_valid:
-        print(f"❌ Ошибка валидации пароля: {password_msg}")
+        print(f" Ошибка валидации пароля: {password_msg}")
         return False
     
     # Получаем соединение с базой данных
     conn, cursor = init_db()
     if not conn or not cursor:
-        print("❌ Не удалось подключиться к базе данных")
+        print(" Не удалось подключиться к базе данных")
         return False
     
     try:
@@ -115,7 +115,7 @@ def authorize_user(username, password):
         if result is None:
             cursor.close()
             conn.close()
-            print("❌ Пользователь не найден")
+            print(" Пользователь не найден")
             return False
         
         stored_hash = result[0]
@@ -127,20 +127,20 @@ def authorize_user(username, password):
             conn.close()
             
             if is_valid:
-                print("✅ Авторизация успешна")
+                print(" Авторизация успешна")
             else:
-                print("❌ Неверный пароль")
+                print(" Неверный пароль")
             
             return is_valid
             
         except VerifyMismatchError:
             cursor.close()
             conn.close()
-            print("❌ Неверный пароль")
+            print(" Неверный пароль")
             return False
             
     except Exception as e:
-        print(f"❌ Ошибка при авторизации: {e}")
+        print(f" Ошибка при авторизации: {e}")
         if cursor:
             cursor.close()
         if conn:

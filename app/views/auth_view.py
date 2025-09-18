@@ -5,7 +5,7 @@ import os
 
 # Добавляем путь к конфигурации
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'config'))
-from auth_config import SECURITY_CONFIG
+from config.auth_config import SECURITY_CONFIG
 
 def get_user_input():
     """Получает ввод пользователя с валидацией"""
@@ -20,7 +20,7 @@ def get_secure_password():
     password_confirm = getpass.getpass("Подтвердите пароль: ")
     
     if password != password_confirm:
-        print("❌ Пароли не совпадают!")
+        print(" Пароли не совпадают!")
         return None
     
     return password
@@ -47,7 +47,7 @@ def auth_menu():
                 
                 if username and password:
                     if register_user(username, password):
-                        print("✅ Пользователь успешно зарегистрирован!")
+                        print(" Пользователь успешно зарегистрирован!")
                     # Ошибки уже выводятся в register_user
                         
             elif choice == "2":
@@ -56,20 +56,20 @@ def auth_menu():
                 
                 if username and password:
                     if authorize_user(username, password):
-                        print("✅ Вход выполнен успешно!")
+                        print(" Вход выполнен успешно!")
                         return True
                     else:
-                        print("❌ Неверный логин или пароль!")
+                        print(" Неверный логин или пароль!")
                         
             elif choice == "3":
-                print("👋 Выход из программы")
+                print(" Выход из программы")
                 return False
             else:
-                print("❌ Неверный выбор. Попробуйте снова.")
+                print(" Неверный выбор. Попробуйте снова.")
                 
         except KeyboardInterrupt:
-            print("\n\n👋 Программа прервана пользователем")
+            print("\n\n Программа прервана пользователем")
             return False
         except Exception as e:
-            print(f"❌ Произошла ошибка: {e}")
+            print(f" Произошла ошибка: {e}")
             continue
